@@ -42,6 +42,9 @@ public class Tiers extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
+		if(!(sender instanceof Player)) {
+			return true;
+		}
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("tiers")) {
 			player.sendMessage(ChatColor.GREEN + "Opening GUI...");
