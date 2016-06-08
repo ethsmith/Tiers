@@ -1,0 +1,10 @@
+name: Tiers
+version: 1.0
+main: com.oakcentralnetwork.tiers.Tiers
+author: TekkitCommando
+description: Tiers Plugin.
+
+commands:
+    kit:
+        usage: /<command>
+        description: Opens a tier inventory.
