@@ -44,8 +44,7 @@ public class Tiers extends JavaPlugin implements Listener {
 	public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("tiers")) {
-			openGUI(player);
-		} else if (cmd.getName().equalsIgnoreCase("tier")) {
+			player.sendMessage(ChatColor.GREEN + "Opening GUI...");
 			openGUI(player);
 		}
 		return true;
