@@ -5,6 +5,6 @@ author: TekkitCommando
 description: Tiers Plugin.
 
 commands:
-    kit:
+    tiers:
         usage: /<command>
         description: Opens a tier inventory.

@@ -24,6 +24,7 @@ public class Tiers extends JavaPlugin implements Listener  {
 	private ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 	
 	public void onEnable() {
+		
 		getServer().getPluginManager().registerEvents(this, this);
 		try {
 			saveConfig();
@@ -32,12 +33,14 @@ public class Tiers extends JavaPlugin implements Listener  {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		Bukkit.getServer().getLogger().info("[Tiers] Enabled!");
 	}
 
 	public void onDisable() {
-		
+		Bukkit.getServer().getLogger().info("[Tiers] Disabled!");
 	}
 	
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
 		if(!(sender instanceof Player)) {
 			return true;
