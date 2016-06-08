@@ -1,11 +1,15 @@
 package com.oakcentralnetwork.tiers;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +25,13 @@ public class Tiers extends JavaPlugin implements Listener  {
 	
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(this, this);
+		try {
+			saveConfig();
+			setupConfig(getConfig());
+			saveConfig();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void onDisable() {
@@ -139,6 +150,20 @@ public class Tiers extends JavaPlugin implements Listener  {
 		default:
 			player.closeInventory();
 			break;
+		}
+	}
+	
+	private void setupConfig(FileConfiguration config) throws IOException {
+		if(!new File(getDataFolder(), "RESET.FILE").exists()) {
+			new File(getDataFolder(), "RESET.FILE").createNewFile();
+			
+			config.set("Tier1.Commands", "broadcast hi,broadcast hello");
+			config.set("Tier2.Commands", "broadcast whats up,broadcast ethan was here");
+			config.set("Tier3.Commands", "broadcast how are you,broadcast im doing good");
+			config.set("Tier4.Commands", "broadcast hows life,broadcast meh");
+			config.set("Tier5.Commands", "broadcast i like bukkit,broadcast me too");
+			
+			new File(getDataFolder(), "RESET.FILE").createNewFile();
 		}
 	}
 	
