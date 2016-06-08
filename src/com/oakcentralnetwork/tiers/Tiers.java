@@ -55,9 +55,9 @@ public class Tiers extends JavaPlugin implements Listener {
 
 		ItemStack tier1 = new ItemStack(Material.WOOD_SWORD);
 		ItemMeta tier1Meta = tier1.getItemMeta();
-		ItemStack tier2 = new ItemStack(Material.STONE_SWORD);
-		ItemMeta tier2Meta = tier1.getItemMeta();
-		ItemStack tier3 = new ItemStack(Material.GOLD_SWORD);
+		ItemStack tier2 = new ItemStack(Material.GOLD_SWORD);
+		ItemMeta tier2Meta = tier2.getItemMeta();
+		ItemStack tier3 = new ItemStack(Material.STONE_SWORD);
 		ItemMeta tier3Meta = tier3.getItemMeta();
 		ItemStack tier4 = new ItemStack(Material.IRON_SWORD);
 		ItemMeta tier4Meta = tier4.getItemMeta();
@@ -67,13 +67,13 @@ public class Tiers extends JavaPlugin implements Listener {
 		tier1Meta.setDisplayName(ChatColor.BLUE + "Tier 1");
 		tier1.setItemMeta(tier1Meta);
 		tier2Meta.setDisplayName(ChatColor.BLUE + "Tier 2");
-		tier2.setItemMeta(tier1Meta);
+		tier2.setItemMeta(tier2Meta);
 		tier3Meta.setDisplayName(ChatColor.BLUE + "Tier 3");
-		tier3.setItemMeta(tier1Meta);
+		tier3.setItemMeta(tier3Meta);
 		tier4Meta.setDisplayName(ChatColor.BLUE + "Tier 4");
-		tier4.setItemMeta(tier1Meta);
+		tier4.setItemMeta(tier4Meta);
 		tier5Meta.setDisplayName(ChatColor.BLUE + "Tier 5");
-		tier5.setItemMeta(tier1Meta);
+		tier5.setItemMeta(tier5Meta);
 
 		inv.setItem(11, tier1);
 		inv.setItem(12, tier2);
@@ -109,7 +109,7 @@ public class Tiers extends JavaPlugin implements Listener {
 			}
 			player.closeInventory();
 			break;
-		case STONE_SWORD:
+		case GOLD_SWORD:
 			String[] commands2 = getConfig().getString("Tier2.Commands").split(",");
 			for (String command : commands2) {
 				if (command != null) {
@@ -118,7 +118,7 @@ public class Tiers extends JavaPlugin implements Listener {
 			}
 			player.closeInventory();
 			break;
-		case GOLD_SWORD:
+		case STONE_SWORD:
 			String[] commands3 = getConfig().getString("Tier3.Commands").split(",");
 			for (String command : commands3) {
 				if (command != null) {
