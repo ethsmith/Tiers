@@ -8,3 +8,6 @@ commands:
     tiers:
         usage: /<command>
         description: Opens a tier inventory.
+    tier:
+        usage: /<command>
+        description: Opens a tier inventory.
