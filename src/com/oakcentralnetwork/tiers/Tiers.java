@@ -51,7 +51,7 @@ public class Tiers extends JavaPlugin implements Listener {
 	}
 
 	public void openGUI(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 28, ChatColor.BLUE + "Tiers");
+		Inventory inv = Bukkit.createInventory(null, 27, ChatColor.BLUE + "Tiers");
 
 		ItemStack tier1 = new ItemStack(Material.WOOD_SWORD);
 		ItemMeta tier1Meta = tier1.getItemMeta();
