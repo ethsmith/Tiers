@@ -86,15 +86,15 @@ public class Tiers extends JavaPlugin implements Listener {
 		ItemStack tier5 = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta tier5Meta = tier5.getItemMeta();
 
-		tier1Meta.setDisplayName(ChatColor.BLUE + "Tier 1");
+		tier1Meta.setDisplayName(ChatColor.BLUE + "Tier 1 - $" + getConfig().getDouble("Tier1.Price"));
 		tier1.setItemMeta(tier1Meta);
-		tier2Meta.setDisplayName(ChatColor.BLUE + "Tier 2");
+		tier2Meta.setDisplayName(ChatColor.BLUE + "Tier 2 - $" + getConfig().getDouble("Tier2.Price"));
 		tier2.setItemMeta(tier2Meta);
-		tier3Meta.setDisplayName(ChatColor.BLUE + "Tier 3");
+		tier3Meta.setDisplayName(ChatColor.BLUE + "Tier 3 - $" + getConfig().getDouble("Tier3.Price"));
 		tier3.setItemMeta(tier3Meta);
-		tier4Meta.setDisplayName(ChatColor.BLUE + "Tier 4");
+		tier4Meta.setDisplayName(ChatColor.BLUE + "Tier 4 - $" + getConfig().getDouble("Tier4.Price"));
 		tier4.setItemMeta(tier4Meta);
-		tier5Meta.setDisplayName(ChatColor.BLUE + "Tier 5");
+		tier5Meta.setDisplayName(ChatColor.BLUE + "Tier 5 - $" + getConfig().getDouble("Tier5.Price"));
 		tier5.setItemMeta(tier5Meta);
 
 		inv.setItem(11, tier1);
