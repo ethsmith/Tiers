@@ -124,78 +124,87 @@ public class Tiers extends JavaPlugin implements Listener {
 
 		switch (event.getCurrentItem().getType()) {
 		case WOOD_SWORD:
-			
+			double price = getConfig().getDouble("Tier1.Price");
+			if(economy.has(player.getName(), price)) {
+				economy.withdrawPlayer(player.getName(), price);
+				player.sendMessage(ChatColor.GREEN + "[Tiers] You have bought Tier 1");
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+				break;
+			}
 			String[] commands = getConfig().getString("Tier1.Commands").split(",");
 			for (String command : commands) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
-			double price = getConfig().getDouble("Tier1.Price");
-			if(economy.has(player.getName(), price)) {
-				economy.withdrawPlayer(player.getName(), price);
-			} else {
-				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
-			}
 			player.closeInventory();
 			break;
 		case GOLD_SWORD:
+			double price1 = getConfig().getDouble("Tier2.Price");
+			if(economy.has(player.getName(), price1)) {
+				economy.withdrawPlayer(player.getName(), price1);
+				player.sendMessage(ChatColor.GREEN + "[Tiers] You have bought Tier 2");
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+				break;
+			}
 			String[] commands2 = getConfig().getString("Tier2.Commands").split(",");
 			for (String command : commands2) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
-			double price1 = getConfig().getDouble("Tier2.Price");
-			if(economy.has(player.getName(), price1)) {
-				economy.withdrawPlayer(player.getName(), price1);
-			} else {
-				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
-			}
 			player.closeInventory();
 			break;
 		case STONE_SWORD:
+			double price2 = getConfig().getDouble("Tier3.Price");
+			if(economy.has(player.getName(), price2)) {
+				economy.withdrawPlayer(player.getName(), price2);
+				player.sendMessage(ChatColor.GREEN + "[Tiers] You have bought Tier 3");
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+				break;
+			}
 			String[] commands3 = getConfig().getString("Tier3.Commands").split(",");
 			for (String command : commands3) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
-			double price2 = getConfig().getDouble("Tier3.Price");
-			if(economy.has(player.getName(), price2)) {
-				economy.withdrawPlayer(player.getName(), price2);
-			} else {
-				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
-			}
 			player.closeInventory();
 			break;
 		case IRON_SWORD:
+			double price3 = getConfig().getDouble("Tier4.Price");
+			if(economy.has(player.getName(), price3)) {
+				economy.withdrawPlayer(player.getName(), price3);
+				player.sendMessage(ChatColor.GREEN + "[Tiers] You have bought Tier 4");
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+				break;
+			}
 			String[] commands4 = getConfig().getString("Tier4.Commands").split(",");
 			for (String command : commands4) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
-			double price3 = getConfig().getDouble("Tier4.Price");
-			if(economy.has(player.getName(), price3)) {
-				economy.withdrawPlayer(player.getName(), price3);
-			} else {
-				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
-			}
 			player.closeInventory();
 			break;
 		case DIAMOND_SWORD:
+			double price4 = getConfig().getDouble("Tier5.Price");
+			if(economy.has(player.getName(), price4)) {
+				economy.withdrawPlayer(player.getName(), price4);
+				player.sendMessage(ChatColor.GREEN + "[Tiers] You have bought Tier 5");
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+				break;
+			}
 			String[] commands5 = getConfig().getString("Tier5.Commands").split(",");
 			for (String command : commands5) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
-			}
-			double price4 = getConfig().getDouble("Tier5.Price");
-			if(economy.has(player.getName(), price4)) {
-				economy.withdrawPlayer(player.getName(), price4);
-			} else {
-				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
 			}
 			player.closeInventory();
 			break;
