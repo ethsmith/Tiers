@@ -17,15 +17,29 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import net.milkbowl.vault.economy.Economy;
 
 public class Tiers extends JavaPlugin implements Listener {
 
 	private ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+	public Economy economy = null;
+	
+	private boolean setupEconomy() {
+		RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+		if(economyProvider != null) {
+			economy = economyProvider.getProvider();
+		}
+		return (economy != null);
+	}
 
 	public void onEnable() {
 
+		Bukkit.getServer().getLogger().info("[Tiers] Registering events...");
 		getServer().getPluginManager().registerEvents(this, this);
+		Bukkit.getServer().getLogger().info("[Tiers] Setting up config...");
 		try {
 			saveConfig();
 			setupConfig(getConfig());
@@ -33,6 +47,8 @@ public class Tiers extends JavaPlugin implements Listener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Bukkit.getServer().getLogger().info("[Tiers] Hooking into vault...");
+		setupEconomy();
 		Bukkit.getServer().getLogger().info("[Tiers] Enabled!");
 	}
 
@@ -90,6 +106,7 @@ public class Tiers extends JavaPlugin implements Listener {
 		player.openInventory(inv);
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
 		if (!ChatColor.stripColor(event.getInventory().getName()).equalsIgnoreCase("Tiers")) {
@@ -107,11 +124,18 @@ public class Tiers extends JavaPlugin implements Listener {
 
 		switch (event.getCurrentItem().getType()) {
 		case WOOD_SWORD:
+			
 			String[] commands = getConfig().getString("Tier1.Commands").split(",");
 			for (String command : commands) {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
+			}
+			double price = getConfig().getDouble("Tier1.Price");
+			if(economy.has(player.getName(), price)) {
+				economy.withdrawPlayer(player.getName(), price);
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
 			}
 			player.closeInventory();
 			break;
@@ -122,6 +146,12 @@ public class Tiers extends JavaPlugin implements Listener {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
+			double price1 = getConfig().getDouble("Tier2.Price");
+			if(economy.has(player.getName(), price1)) {
+				economy.withdrawPlayer(player.getName(), price1);
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+			}
 			player.closeInventory();
 			break;
 		case STONE_SWORD:
@@ -130,6 +160,12 @@ public class Tiers extends JavaPlugin implements Listener {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
+			}
+			double price2 = getConfig().getDouble("Tier3.Price");
+			if(economy.has(player.getName(), price2)) {
+				economy.withdrawPlayer(player.getName(), price2);
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
 			}
 			player.closeInventory();
 			break;
@@ -140,6 +176,12 @@ public class Tiers extends JavaPlugin implements Listener {
 					Bukkit.dispatchCommand(console, command);
 				}
 			}
+			double price3 = getConfig().getDouble("Tier4.Price");
+			if(economy.has(player.getName(), price3)) {
+				economy.withdrawPlayer(player.getName(), price3);
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
+			}
 			player.closeInventory();
 			break;
 		case DIAMOND_SWORD:
@@ -148,6 +190,12 @@ public class Tiers extends JavaPlugin implements Listener {
 				if (command != null) {
 					Bukkit.dispatchCommand(console, command);
 				}
+			}
+			double price4 = getConfig().getDouble("Tier5.Price");
+			if(economy.has(player.getName(), price4)) {
+				economy.withdrawPlayer(player.getName(), price4);
+			} else {
+				player.sendMessage(ChatColor.RED + "[Tiers] You do not have enough money to buy that tier!");
 			}
 			player.closeInventory();
 			break;
