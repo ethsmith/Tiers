@@ -166,6 +166,12 @@ public class Tiers extends JavaPlugin implements Listener {
 			config.set("Tier3.Commands", "broadcast how are you,broadcast im doing good");
 			config.set("Tier4.Commands", "broadcast hows life,broadcast meh");
 			config.set("Tier5.Commands", "broadcast i like bukkit,broadcast me too");
+			
+			config.set("Tier1.Price", 5000);
+			config.set("Tier2.Price", 15000);
+			config.set("Tier3.Price", 35000);
+			config.set("Tier4.Price", 75000);
+			config.set("Tier5.Price", 125000);
 
 			new File(getDataFolder(), "RESET.FILE").createNewFile();
 		}
